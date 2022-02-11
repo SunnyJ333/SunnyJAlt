@@ -27,7 +27,7 @@ export default class HelloWorld {
 	private async started() {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
-		
+/*		
 		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
 			actor: {
 				name: 'Sound Actor',
@@ -35,7 +35,7 @@ export default class HelloWorld {
 
 			}
 		});
-
+*/
 		this.soundOronC = this.assets.createSound('soundOronaminC',
 		{uri: 'https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg'});
 
