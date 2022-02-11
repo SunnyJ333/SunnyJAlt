@@ -54,7 +54,7 @@ export default class HelloWorld {
 				// applies to the rotation of an unknown actor we'll refer to as "target"
 				target: MRE.ActorPath("target").transform.local.rotation,
 				// do a spin around the X axis over the course of one second
-				keyframes: this.generateSpinKeyframes( 17.0, new MRE.Vector3(0.0,1.0,0.0)),
+				keyframes: this.generateSpinKeyframes( 13.0, new MRE.Vector3(0.0,1.0,0.0)),
 				// and do it smoothly
 				easing: MRE.AnimationEaseCurves.Linear
 			}]}
@@ -86,7 +86,7 @@ export default class HelloWorld {
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick(_ => {
 			flipAnim.play();
-			this.startSound(this.soundOronC.id);
+			this.assets.startSound(this.assets.soundOronC.id);
 		});
 	}
 
