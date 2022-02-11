@@ -80,7 +80,7 @@ export default class HelloWorld {
 				transform: {
 					local: {
 						position: { x: 0, y: -1, z: 0 },
-						scale: { x: 0.4, y: 0.4, z: 0.4 }
+						scale: { x: 0.2, y: 0.2, z: 0.2 }
 					}
 				}
 			}
@@ -94,7 +94,7 @@ export default class HelloWorld {
 				// applies to the rotation of an unknown actor we'll refer to as "target"
 				target: MRE.ActorPath("target").transform.local.rotation,
 				// do a spin around the X axis over the course of one second
-				keyframes: this.generateSpinKeyframes(1.0, MRE.Vector3.Right()),
+				keyframes: this.generateSpinKeyframes(1.0, new MRE.Vector3(0.0,1.0,0.0)),
 				// and do it smoothly
 				easing: MRE.AnimationEaseCurves.Linear
 			}]}
@@ -110,14 +110,14 @@ export default class HelloWorld {
 		buttonBehavior.onHover('enter', () => {
 			// use the convenience function "AnimateTo" instead of creating the animation data in advance
 			MRE.Animation.AnimateTo(this.context, this.cube, {
-				destination: { transform: { local: { scale: { x: 0.5, y: 0.5, z: 0.5 } } } },
+				destination: { transform: { local: { scale: { x: 0.4, y: 0.4, z: 0.4 } } } },
 				duration: 0.3,
 				easing: MRE.AnimationEaseCurves.EaseOutSine
 			});
 		});
 		buttonBehavior.onHover('exit', () => {
 			MRE.Animation.AnimateTo(this.context, this.cube, {
-				destination: { transform: { local: { scale: { x: 0.4, y: 0.4, z: 0.4 } } } },
+				destination: { transform: { local: { scale: { x: 0.2, y: 0.2, z: 0.2 } } } },
 				duration: 0.3,
 				easing: MRE.AnimationEaseCurves.EaseOutSine
 			});
