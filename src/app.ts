@@ -32,7 +32,7 @@ export default class HelloWorld {
 				// Parent the glTF model to the text actor, so the transform is relative to the text
 				transform: {
 					local: {
-						position: { x: 0, y: -1, z: 0 },
+						position: { x: 0, y: -0.5, z: 0 },
 						scale: { x: 0.3, y: 0.3, z: 0.3 }
 					}
 				}
@@ -48,7 +48,7 @@ export default class HelloWorld {
 				// applies to the rotation of an unknown actor we'll refer to as "target"
 				target: MRE.ActorPath("target").transform.local.rotation,
 				// do a spin around the X axis over the course of one second
-				keyframes: this.generateSpinKeyframes(1.0, new MRE.Vector3(0.0,1.0,0.0)),
+				keyframes: this.generateSpinKeyframes( 7.0, new MRE.Vector3(0.0,1.0,0.0)),
 				// and do it smoothly
 				easing: MRE.AnimationEaseCurves.Linear
 			}]}
