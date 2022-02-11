@@ -41,7 +41,6 @@ export default class HelloWorld {
 			resourceId: 'artifact:1931375002129531487'
 		});
 
-		this.cube.create
 		// Create some animations on the cube.
 		const flipAnimData = this.assets.createAnimationData(
 			// the animation name
