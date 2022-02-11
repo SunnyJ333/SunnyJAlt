@@ -33,7 +33,7 @@ export default class HelloWorld {
 				transform: {
 					local: {
 						position: { x: 0, y: -1, z: 0 },
-						scale: { x: 0.2, y: 0.2, z: 0.2 }
+						scale: { x: 0.3, y: 0.3, z: 0.3 }
 					}
 				}
 			},
@@ -71,7 +71,7 @@ export default class HelloWorld {
 		});
 		buttonBehavior.onHover('exit', () => {
 			MRE.Animation.AnimateTo(this.context, this.cube, {
-				destination: { transform: { local: { scale: { x: 0.2, y: 0.2, z: 0.2 } } } },
+				destination: { transform: { local: { scale: { x: 0.3, y: 0.3, z: 0.3 } } } },
 				duration: 0.3,
 				easing: MRE.AnimationEaseCurves.EaseOutSine
 			});
