@@ -105,7 +105,7 @@ export default class HelloWorld {
 				looping: false,
 				paused: false,
 				pitch: 0,
-				rolloffStartDistance: 1.0,
+				rolloffStartDistance: 0.5,
 				spread: 0.0,
 				time: 0,
 				volume: 1.0
