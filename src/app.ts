@@ -26,20 +26,18 @@ export default class HelloWorld {
 
 		// spawn a copy of the glTF model
 		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
-			// using the data we loaded earlier
-			resourceId: 'artifact:1931375002129531487',
 			// Also apply the following generic actor properties.
 			actor: {
 				name: 'Altspace Cube',
 				// Parent the glTF model to the text actor, so the transform is relative to the text
-				parentId: this.text.id,
 				transform: {
 					local: {
 						position: { x: 0, y: -1, z: 0 },
 						scale: { x: 0.4, y: 0.4, z: 0.4 }
 					}
 				}
-			}
+			},
+			resourceId: 'artifact:1931375002129531487'
 		});
 
 		// Create some animations on the cube.
