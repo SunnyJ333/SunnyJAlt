@@ -13,6 +13,8 @@ export default class HelloWorld {
 	private text: MRE.Actor = null;
 	private cube: MRE.Actor = null;
 	private assets: MRE.AssetContainer;
+
+	private soundActor?: MRE.Actor = undefined;
 	private soundOronC?: MRE.Sound = undefined;
 
 	constructor(private context: MRE.Context) {
@@ -26,6 +28,13 @@ export default class HelloWorld {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
 		
+		this.soundActor = MRE.Actor.Create(this.context, {
+			actor: {
+				name: 'Sound Actor',
+				parentId: this.cube.id
+			}
+		});
+
 		this.soundOronC = this.assets.createSound('soundOronaminC',
 		{uri: 'https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg'});
 
@@ -55,7 +64,7 @@ export default class HelloWorld {
 				// applies to the rotation of an unknown actor we'll refer to as "target"
 				target: MRE.ActorPath("target").transform.local.rotation,
 				// do a spin around the X axis over the course of one second
-				keyframes: this.generateSpinKeyframes( 13.0, new MRE.Vector3(0.0,1.0,0.0)),
+				keyframes: this.generateSpinKeyframes( 13.0, new MRE.Vector3(0.0, 1.0, 0.0)),
 				// and do it smoothly
 				easing: MRE.AnimationEaseCurves.Linear
 			}]}
@@ -86,7 +95,7 @@ export default class HelloWorld {
 
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick(_ => {
-			//this.cube.startSound(this.soundOronC.id,{});
+			this.soundActor.startSound(this.soundOronC.id,{});
 			flipAnim.play();
 		});
 	}
