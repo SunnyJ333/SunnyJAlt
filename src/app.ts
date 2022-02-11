@@ -35,11 +35,13 @@ export default class HelloWorld {
 						position: { x: 0, y: -0.5, z: 0 },
 						scale: { x: 0.3, y: 0.3, z: 0.3 }
 					}
-				}
+				},
+				collider: { geometry: { shape: MRE.ColliderType.Auto } }
 			},
 			resourceId: 'artifact:1931375002129531487'
 		});
 
+		this.cube.create
 		// Create some animations on the cube.
 		const flipAnimData = this.assets.createAnimationData(
 			// the animation name
