@@ -32,7 +32,7 @@ export default class HelloWorld {
 				// Parent the glTF model to the text actor, so the transform is relative to the text
 				transform: {
 					local: {
-						position: { x: -1, y: -1, z: 0 },
+						position: { x: 0, y: 0, z: 0 },
 						scale: { x: 0.4, y: 0.4, z: 0.4 }
 					}
 				}
