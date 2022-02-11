@@ -56,7 +56,7 @@ export default class HelloWorld {
 				keyframes: this.generateSpinKeyframes( 17.0, new MRE.Vector3(0.0,1.0,0.0)),
 				// and do it smoothly
 				easing: MRE.AnimationEaseCurves.Linear
-			},this.startSound()]}
+			}]}
 		);
 		// apply the animation to our cube
 		const flipAnim = await flipAnimData.bind({ target: this.cube });
@@ -85,6 +85,7 @@ export default class HelloWorld {
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick(_ => {
 			flipAnim.play();
+			this.startSound(this.soundOronC.id);
 		});
 	}
 
