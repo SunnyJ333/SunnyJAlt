@@ -99,10 +99,10 @@ export default class HelloWorld {
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick(_ => {
 			flipAnim.play();
-			
+
 			this.soundActor.startSound(this.soundOronC.id,{
 				doppler: 0.0,
-				looping: true,
+				looping: false,
 				paused: false,
 				pitch: 0,
 				rolloffStartDistance: 1.0,
