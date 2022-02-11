@@ -9,6 +9,7 @@ import * as MRE from '@microsoft/mixed-reality-extension-sdk';
  * The main class of this app. All the logic goes here.
  */
 export default class HelloWorld {
+	[x: string]: any;
 	private text: MRE.Actor = null;
 	private cube: MRE.Actor = null;
 	private assets: MRE.AssetContainer;
@@ -23,6 +24,8 @@ export default class HelloWorld {
 	private async started() {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
+		
+		this.soundOronC = this.assets.createSound("OronaminC",'https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg');
 
 		// spawn a copy of the glTF model
 		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
@@ -53,7 +56,7 @@ export default class HelloWorld {
 				keyframes: this.generateSpinKeyframes( 17.0, new MRE.Vector3(0.0,1.0,0.0)),
 				// and do it smoothly
 				easing: MRE.AnimationEaseCurves.Linear
-			}]}
+			},this.startSound()]}
 		);
 		// apply the animation to our cube
 		const flipAnim = await flipAnimData.bind({ target: this.cube });
