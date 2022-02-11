@@ -86,7 +86,7 @@ export default class HelloWorld {
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick(_ => {
 			flipAnim.play();
-			this.cube.startSound(this.assets.soundOronC.id,{});
+			this.cube.startSound(this.soundOronC.id,{});
 		});
 	}
 
