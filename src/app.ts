@@ -28,10 +28,11 @@ export default class HelloWorld {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
 		
-		this.soundActor = MRE.Actor.Create(this.context, {
+		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
 			actor: {
 				name: 'Sound Actor',
 				parentId: this.cube.id
+
 			}
 		});
 
