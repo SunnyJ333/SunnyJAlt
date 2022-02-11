@@ -25,7 +25,7 @@ export default class HelloWorld {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
 		
-		this.soundOronC = this.assets.createSound("OronaminC",
+		this.soundOronC = this.assets.createSound('OronaminC',
 		{uri: 'https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg'});
 
 		// spawn a copy of the glTF model
@@ -86,7 +86,7 @@ export default class HelloWorld {
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick(_ => {
 			flipAnim.play();
-			this.assets.startSound(this.assets.soundOronC.id);
+			this.cube.startSound();
 		});
 	}
 
