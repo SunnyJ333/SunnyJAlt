@@ -72,7 +72,7 @@ export default class HelloWorld {
 				easing: MRE.AnimationEaseCurves.Linear
 			}]}
 		);
-		// apply the animation to our cube
+		// apply the animation tonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn our cube
 		const flipAnim = await flipAnimData.bind({ target: this.cube });
 
 		// Set up cursor interaction. We add the input behavior ButtonBehavior to the cube.
@@ -103,7 +103,7 @@ export default class HelloWorld {
 			this.soundActor.startSound(this.soundOronC.id,{
 				doppler: 0.0,
 				looping: false,
-				paused: true,
+				paused: false,
 				pitch: 0,
 				rolloffStartDistance: 0.1,
 				spread: 0.0,
