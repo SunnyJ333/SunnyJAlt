@@ -103,7 +103,7 @@ export default class HelloWorld {
 			this.soundActor.startSound(this.soundOronC.id,{
 				doppler: 0.0,
 				looping: false,
-				paused: false,
+				paused: true,
 				pitch: 0,
 				rolloffStartDistance: 0.1,
 				spread: 0.0,
