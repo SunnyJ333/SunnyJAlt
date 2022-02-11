@@ -25,7 +25,8 @@ export default class HelloWorld {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
 		
-		this.soundOronC = this.assets.createSound("OronaminC",'https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg');
+		this.soundOronC = this.assets.createSound("OronaminC",
+		{uri: 'https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg'});
 
 		// spawn a copy of the glTF model
 		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
