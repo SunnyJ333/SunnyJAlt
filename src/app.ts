@@ -58,7 +58,7 @@ export default class HelloWorld {
 
 			}
 		});
-		
+
 		// Create some animations on the cube.
 		const flipAnimData = this.assets.createAnimationData(
 			// the animation name
@@ -98,8 +98,19 @@ export default class HelloWorld {
 
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick(_ => {
-			this.soundActor.startSound(this.soundOronC.id,{});
 			flipAnim.play();
+			
+			this.soundActor.startSound(this.soundOronC.id,{
+				doppler: 0.0,
+				looping: true,
+				paused: false,
+				pitch: 0,
+				rolloffStartDistance: 1.0,
+				spread: 0.0,
+				time: 0,
+				volume: 1.0
+			});
+			
 		});
 	}
 
