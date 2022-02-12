@@ -47,7 +47,7 @@ export default class HelloWorld {
 					},
 				},
 			},
-			resourceId: "artifact:1931375002129531487",
+			resourceId: "artifact:1928408464636248544",
 		});
 
 		this.cube.setCollider(MRE.ColliderType.Auto, false);
