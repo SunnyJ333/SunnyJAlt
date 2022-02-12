@@ -73,7 +73,7 @@ export default class HelloWorld {
 				],
 			}
 		);
-		// apply the animation tonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn our cube
+		// apply the animation to our cube
 		const flipAnim = await flipAnimData.bind({ target: this.cube });
 
 		// Set up cursor interaction. We add the input behavior ButtonBehavior to the cube.
