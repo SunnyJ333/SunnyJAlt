@@ -19,7 +19,7 @@ export default class HelloWorld {
 
 	constructor(private context: MRE.Context) {
 		this.context.onStarted(() => this.started());
-		this.context.userJoined(user => this.userJoined(user));
+		this.context.onUserJoined(user => this.onUserJoined(user));
 	}
 
 	/**
@@ -27,7 +27,7 @@ export default class HelloWorld {
 	 */
 	//private async started() {}
 
-	private async userJoined(user: MRE.User) {
+	private async onUserJoined(user: MRE.User) {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
 
