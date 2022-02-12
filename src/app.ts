@@ -24,39 +24,12 @@ export default class HelloWorld {
 	/**
 	 * Once the context is "started", initialize the app.
 	 */
-	//private async started() {}
-
-	private async onUserJoined(user: MRE.User) {
+	private async started() {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
 
 		this.soundOronC = this.assets.createSound("soundOronaminC", {
 			uri: "https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg",
-		});
-
-		// spawn a copy of the glTF model
-		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
-			// Also apply the following generic actor properties.
-			actor: {
-				name: "Altspace Cube",
-				// Parent the glTF model to the text actor, so the transform is relative to the text
-				transform: {
-					local: {
-						position: { x: 0, y: -0.5, z: 0 },
-						scale: { x: 0.3, y: 0.3, z: 0.3 },
-					},
-				},
-			},
-			resourceId: "artifact:1931375002129531487",
-		});
-
-		this.cube.setCollider(MRE.ColliderType.Auto, false);
-
-		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
-			actor: {
-				name: "Sound Actor",
-				parentId: this.cube.id,
-			},
 		});
 
 		// Create some animations on the cube.
@@ -88,24 +61,24 @@ export default class HelloWorld {
 		const buttonBehavior = this.cube.setBehavior(MRE.ButtonBehavior);
 
 		/*
-// Trigger the grow/shrink animations on hover.
-buttonBehavior.onHover('enter', () => {
-	// use the convenience function "AnimateTo" instead of creating the animation data in advance
-	MRE.Animation.AnimateTo(this.context, this.cube, {
-		destination: { transform: { local: { scale: { x: 0.4, y: 0.4, z: 0.4 } } } },
-		duration: 0.3,
-		easing: MRE.AnimationEaseCurves.EaseOutSine
-	});
-});
-buttonBehavior.onHover('exit', () => {
-	MRE.Animation.AnimateTo(this.context, this.cube, {
-		destination: { transform: { local: { scale: { x: 0.3, y: 0.3, z: 0.3 } } } },
-		duration: 0.3,
-		easing: MRE.AnimationEaseCurves.EaseOutSine
-	});
-});
+		// Trigger the grow/shrink animations on hover.
+		buttonBehavior.onHover('enter', () => {
+			// use the convenience function "AnimateTo" instead of creating the animation data in advance
+			MRE.Animation.AnimateTo(this.context, this.cube, {
+				destination: { transform: { local: { scale: { x: 0.4, y: 0.4, z: 0.4 } } } },
+				duration: 0.3,
+				easing: MRE.AnimationEaseCurves.EaseOutSine
+			});
+		});
+		buttonBehavior.onHover('exit', () => {
+			MRE.Animation.AnimateTo(this.context, this.cube, {
+				destination: { transform: { local: { scale: { x: 0.3, y: 0.3, z: 0.3 } } } },
+				duration: 0.3,
+				easing: MRE.AnimationEaseCurves.EaseOutSine
+			});
+		});
 
-*/
+		*/
 
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick((_) => {
@@ -121,6 +94,33 @@ buttonBehavior.onHover('exit', () => {
 				time: 0,
 				volume: 0.9,
 			});
+		});
+	}
+
+	private onUserJoined(user: MRE.User) {
+		// spawn a copy of the glTF model
+		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
+			// Also apply the following generic actor properties.
+			actor: {
+				name: "Altspace Cube",
+				// Parent the glTF model to the text actor, so the transform is relative to the text
+				transform: {
+					local: {
+						position: { x: 0, y: -0.5, z: 0 },
+						scale: { x: 0.3, y: 0.3, z: 0.3 },
+					},
+				},
+			},
+			resourceId: "artifact:1931375002129531487",
+		});
+
+		this.cube.setCollider(MRE.ColliderType.Auto, false);
+
+		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
+			actor: {
+				name: "Sound Actor",
+				parentId: this.cube.id,
+			},
 		});
 	}
 
