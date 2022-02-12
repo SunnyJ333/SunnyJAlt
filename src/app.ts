@@ -116,14 +116,13 @@ export default class HelloWorld {
 			this.attachedHats.get(userId).destroy();
 		this.attachedHats.delete(userId);
 
-		const attachPoint = <MRE.AttachPoint>{ attachPoint: "head" };
 
-		this.soundActor = new MRE.Actor.CreateEmpty(this.context, {
+		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
 			actor: {
 				name: "Sound Actor",
 
 				attachment: {
-					attachPoint: attachPoint,
+					attachPoint: 'head',
 					userId,
 				},
 			},
