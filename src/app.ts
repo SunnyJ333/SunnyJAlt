@@ -19,6 +19,7 @@ export default class HelloWorld {
 
 	constructor(private context: MRE.Context) {
 		this.context.onStarted(() => this.started());
+		this.context.onUserJoined(user => this.onUserJoined(user));
 	}
 
 	/**
@@ -28,30 +29,7 @@ export default class HelloWorld {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
 
-		// spawn a copy of the glTF model
-		const cube = MRE.Actor.CreateFromLibrary(this.context, {
-			// Also apply the following generic actor properties.
-			actor: {
-				name: "Altspace Cube",
-				// Parent the glTF model to the text actor, so the transform is relative to the text
-				transform: {
-					local: {
-						position: { x: 0, y: -0.5, z: 0 },
-						scale: { x: 0.3, y: 0.3, z: 0.3 },
-					},
-				},
-			},
-			resourceId: "artifact:1931375002129531487",
-		});
-
-		this.cube.setCollider(MRE.ColliderType.Auto, false);
-
-		const soundActor = MRE.Actor.CreateEmpty(this.context, {
-			actor: {
-				name: "Sound Actor",
-				parentId: this.cube.id,
-			},
-		});
+		
 
 		this.soundOronC = this.assets.createSound("soundOronaminC", {
 			uri: "https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg",
@@ -122,7 +100,34 @@ export default class HelloWorld {
 		});
 	}
 
-	private userJoined(user: MRE.User) {}
+	private userJoined(user: MRE.User) {
+
+		// spawn a copy of the glTF model
+		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
+			// Also apply the following generic actor properties.
+			actor: {
+				name: "Altspace Cube",
+				// Parent the glTF model to the text actor, so the transform is relative to the text
+				transform: {
+					local: {
+						position: { x: 0, y: -0.5, z: 0 },
+						scale: { x: 0.3, y: 0.3, z: 0.3 },
+					},
+				},
+			},
+			resourceId: "artifact:1931375002129531487",
+		});
+
+		this.cube.setCollider(MRE.ColliderType.Auto, false);
+
+		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
+			actor: {
+				name: "Sound Actor",
+				parentId: this.cube.id,
+			},
+		});
+
+	}
 
 	/**
 	 * Generate keyframe data for a simple spin animation.
