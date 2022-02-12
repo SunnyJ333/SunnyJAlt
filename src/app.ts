@@ -108,7 +108,7 @@ export default class HelloWorld {
 				rolloffStartDistance: 0.1,
 				spread: 0.0,
 				time: 0,
-				volume: 1.0
+				volume: 0.9
 			});
 			
 		});
@@ -137,4 +137,7 @@ export default class HelloWorld {
 			value: MRE.Quaternion.RotationAxis(axis, 2 * Math.PI)
 		}];
 	}
+
+
+	private async onUserJoined
 }
