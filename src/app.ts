@@ -96,7 +96,7 @@ export default class HelloWorld {
 	private userJoined(user: MRE.User){
 
 		// spawn a copy of the glTF model
-		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
+		const cube = MRE.Actor.CreateFromLibrary(this.context, {
 			// Also apply the following generic actor properties.
 			actor: {
 				name: 'Altspace Cube',
@@ -113,7 +113,7 @@ export default class HelloWorld {
 
 		this.cube.setCollider(MRE.ColliderType.Auto, false);
 
-		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
+		const soundActor = MRE.Actor.CreateEmpty(this.context, {
 			actor: {
 				name: 'Sound Actor',
 				parentId: this.cube.id
