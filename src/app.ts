@@ -79,6 +79,7 @@ export default class HelloWorld {
 		// Button behaviors have two pairs of events: hover start/stop, and click start/stop.
 		const buttonBehavior = this.cube.setBehavior(MRE.ButtonBehavior);
 
+		/*
 		// Trigger the grow/shrink animations on hover.
 		buttonBehavior.onHover('enter', () => {
 			// use the convenience function "AnimateTo" instead of creating the animation data in advance
@@ -96,6 +97,8 @@ export default class HelloWorld {
 			});
 		});
 
+		*/
+
 		// When clicked, do a 360 sideways.
 		buttonBehavior.onClick(_ => {
 			flipAnim.play();
@@ -105,7 +108,7 @@ export default class HelloWorld {
 				looping: false,
 				paused: false,
 				pitch: 0,
-				rolloffStartDistance: 0.1,
+				rolloffStartDistance: 0.05,
 				spread: 0.0,
 				time: 0,
 				volume: 0.9
