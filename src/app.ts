@@ -140,7 +140,7 @@ export default class HelloWorld {
 			rolloffStartDistance: 0.01,
 			spread: 0.0,
 			time: 0,
-			volume: 0.8
+			volume: 0.9
 		});
 
 		
