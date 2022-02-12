@@ -111,7 +111,7 @@ export default class HelloWorld {
 		});
 	}
 
-	private async onUserJoined(user: MRE.User){
+	private onUserJoined(user: MRE.User){
 
 		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
 			actor: {
@@ -120,7 +120,7 @@ export default class HelloWorld {
 
 			}
 		});
-		
+
 	}
 
 	/**
