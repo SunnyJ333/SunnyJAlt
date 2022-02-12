@@ -51,13 +51,7 @@ export default class HelloWorld {
 
 		this.cube.setCollider(MRE.ColliderType.Auto, false);
 
-		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
-			actor: {
-				name: 'Sound Actor',
-				parentId: this.cube.id
-
-			}
-		});
+		
 
 		// Create some animations on the cube.
 		const flipAnimData = this.assets.createAnimationData(
@@ -117,6 +111,18 @@ export default class HelloWorld {
 		});
 	}
 
+	private async onUserJoined(user: MRE.User){
+
+		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
+			actor: {
+				name: 'Sound Actor',
+				parentId: this.cube.id
+
+			}
+		});
+		
+	}
+
 	/**
 	 * Generate keyframe data for a simple spin animation.
 	 * @param duration The length of time in seconds it takes to complete a full revolution.
@@ -142,7 +148,5 @@ export default class HelloWorld {
 	}
 
 
-	private async onUserJoined(user: MRE.User){
-
-	}
+	
 }
