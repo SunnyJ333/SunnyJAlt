@@ -93,7 +93,7 @@ export default class HelloWorld {
 		});
 	}
 
-	private uerJoined(user: MRE.User){
+	private userJoined(user: MRE.User){
 
 		// spawn a copy of the glTF model
 		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
