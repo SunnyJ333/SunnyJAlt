@@ -139,5 +139,7 @@ export default class HelloWorld {
 	}
 
 
-	private async onUserJoined
+	private async onUserJoined(user: MRE.User){
+
+	}
 }
