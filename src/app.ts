@@ -113,7 +113,7 @@ export default class HelloWorld {
 
 		this.cube.setCollider(MRE.ColliderType.Auto, false);
 
-		const soundActor = MRE.Actor.CreateEmpty(this.context, {
+		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
 			actor: {
 				name: "Sound Actor",
 				parentId: this.cube.id,
