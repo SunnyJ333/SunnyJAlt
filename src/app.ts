@@ -14,7 +14,7 @@ export default class HelloWorld {
 	private cube: MRE.Actor = null;
 	private assets: MRE.AssetContainer;
 
-	private soundActor?: MRE.Actor = undefined;
+	//private soundActor?: MRE.Actor = undefined;
 	private soundOronC?: MRE.Sound = undefined;
 
 	private attachedHats = new Map<MRE.Guid, MRE.Actor>();
@@ -116,8 +116,7 @@ export default class HelloWorld {
 			this.attachedHats.get(userId).destroy();
 		this.attachedHats.delete(userId);
 
-
-		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
+		this.soundActor = new MRE.Actor.CreateEmpty(this.context, {
 			actor: {
 				name: "Sound Actor",
 
@@ -135,10 +134,10 @@ export default class HelloWorld {
 			looping: false,
 			paused: false,
 			pitch: 0,
-			rolloffStartDistance: 0.1,
+			rolloffStartDistance: 0.01,
 			spread: 0.0,
 			time: 0,
-			volume: 1.0,
+			volume: 0.8
 		});
 	}
 
