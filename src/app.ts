@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import * as MRE from '@microsoft/mixed-reality-extension-sdk';
+import * as MRE from "@microsoft/mixed-reality-extension-sdk";
 
 /**
  * The main class of this app. All the logic goes here.
@@ -24,47 +24,61 @@ export default class HelloWorld {
 	/**
 	 * Once the context is "started", initialize the app.
 	 */
-	private async started() {
+	//private async started() {}
+
+	private async onUserJoined(user: MRE.User) {
 		// set up somewhere to store loaded assets (meshes, textures, animations, gltfs, etc.)
 		this.assets = new MRE.AssetContainer(this.context);
-		
-		
 
-		this.soundOronC = this.assets.createSound('soundOronaminC',
-		{uri: 'https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg'});
+		this.soundOronC = this.assets.createSound("soundOronaminC", {
+			uri: "https://cdn-content-ingress.altvr.com/uploads/audio_clip/audio/1934786944458294000/ogg_OronaminC.ogg",
+		});
 
 		// spawn a copy of the glTF model
 		this.cube = MRE.Actor.CreateFromLibrary(this.context, {
 			// Also apply the following generic actor properties.
 			actor: {
-				name: 'Altspace Cube',
+				name: "Altspace Cube",
 				// Parent the glTF model to the text actor, so the transform is relative to the text
 				transform: {
 					local: {
 						position: { x: 0, y: -0.5, z: 0 },
-						scale: { x: 0.3, y: 0.3, z: 0.3 }
-					}
-				}
+						scale: { x: 0.3, y: 0.3, z: 0.3 },
+					},
+				},
 			},
-			resourceId: 'artifact:1931375002129531487'
+			resourceId: "artifact:1931375002129531487",
 		});
 
 		this.cube.setCollider(MRE.ColliderType.Auto, false);
 
-		
+		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
+			actor: {
+				name: "Sound Actor",
+				parentId: this.cube.id,
+			},
+		});
 
 		// Create some animations on the cube.
 		const flipAnimData = this.assets.createAnimationData(
 			// the animation name
 			"DoAFlip",
-			{ tracks: [{
-				// applies to the rotation of an unknown actor we'll refer to as "target"
-				target: MRE.ActorPath("target").transform.local.rotation,
-				// do a spin around the X axis over the course of one second
-				keyframes: this.generateSpinKeyframes( 13.0, new MRE.Vector3(0.0, 1.0, 0.0)),
-				// and do it smoothly
-				easing: MRE.AnimationEaseCurves.Linear
-			}]}
+			{
+				tracks: [
+					{
+						// applies to the rotation of an unknown actor we'll refer to as "target"
+						target: MRE.ActorPath("target").transform.local
+							.rotation,
+						// do a spin around the X axis over the course of one second
+						keyframes: this.generateSpinKeyframes(
+							13.0,
+							new MRE.Vector3(0.0, 1.0, 0.0)
+						),
+						// and do it smoothly
+						easing: MRE.AnimationEaseCurves.Linear,
+					},
+				],
+			}
 		);
 		// apply the animation to our cube
 		const flipAnim = await flipAnimData.bind({ target: this.cube });
@@ -74,30 +88,30 @@ export default class HelloWorld {
 		const buttonBehavior = this.cube.setBehavior(MRE.ButtonBehavior);
 
 		/*
-		// Trigger the grow/shrink animations on hover.
-		buttonBehavior.onHover('enter', () => {
-			// use the convenience function "AnimateTo" instead of creating the animation data in advance
-			MRE.Animation.AnimateTo(this.context, this.cube, {
-				destination: { transform: { local: { scale: { x: 0.4, y: 0.4, z: 0.4 } } } },
-				duration: 0.3,
-				easing: MRE.AnimationEaseCurves.EaseOutSine
-			});
-		});
-		buttonBehavior.onHover('exit', () => {
-			MRE.Animation.AnimateTo(this.context, this.cube, {
-				destination: { transform: { local: { scale: { x: 0.3, y: 0.3, z: 0.3 } } } },
-				duration: 0.3,
-				easing: MRE.AnimationEaseCurves.EaseOutSine
-			});
-		});
+// Trigger the grow/shrink animations on hover.
+buttonBehavior.onHover('enter', () => {
+	// use the convenience function "AnimateTo" instead of creating the animation data in advance
+	MRE.Animation.AnimateTo(this.context, this.cube, {
+		destination: { transform: { local: { scale: { x: 0.4, y: 0.4, z: 0.4 } } } },
+		duration: 0.3,
+		easing: MRE.AnimationEaseCurves.EaseOutSine
+	});
+});
+buttonBehavior.onHover('exit', () => {
+	MRE.Animation.AnimateTo(this.context, this.cube, {
+		destination: { transform: { local: { scale: { x: 0.3, y: 0.3, z: 0.3 } } } },
+		duration: 0.3,
+		easing: MRE.AnimationEaseCurves.EaseOutSine
+	});
+});
 
-		*/
+*/
 
 		// When clicked, do a 360 sideways.
-		buttonBehavior.onClick(_ => {
+		buttonBehavior.onClick((_) => {
 			flipAnim.play();
 
-			this.soundActor.startSound(this.soundOronC.id,{
+			this.soundActor.startSound(this.soundOronC.id, {
 				doppler: 0.0,
 				looping: false,
 				paused: false,
@@ -105,22 +119,9 @@ export default class HelloWorld {
 				rolloffStartDistance: 0.05,
 				spread: 0.0,
 				time: 0,
-				volume: 0.9
+				volume: 0.9,
 			});
-			
 		});
-	}
-
-	private onUserJoined(user: MRE.User){
-
-		this.soundActor = MRE.Actor.CreateEmpty(this.context, {
-			actor: {
-				name: 'Sound Actor',
-				parentId: this.cube.id
-
-			}
-		});
-
 	}
 
 	/**
@@ -128,25 +129,31 @@ export default class HelloWorld {
 	 * @param duration The length of time in seconds it takes to complete a full revolution.
 	 * @param axis The axis of rotation in local space.
 	 */
-	private generateSpinKeyframes(duration: number, axis: MRE.Vector3): Array<MRE.Keyframe<MRE.Quaternion>> {
-		return [{
-			time: 0 * duration,
-			value: MRE.Quaternion.RotationAxis(axis, 0)
-		}, {
-			time: 0.25 * duration,
-			value: MRE.Quaternion.RotationAxis(axis, Math.PI / 2)
-		}, {
-			time: 0.5 * duration,
-			value: MRE.Quaternion.RotationAxis(axis, Math.PI)
-		}, {
-			time: 0.75 * duration,
-			value: MRE.Quaternion.RotationAxis(axis, 3 * Math.PI / 2)
-		}, {
-			time: 1 * duration,
-			value: MRE.Quaternion.RotationAxis(axis, 2 * Math.PI)
-		}];
+	private generateSpinKeyframes(
+		duration: number,
+		axis: MRE.Vector3
+	): Array<MRE.Keyframe<MRE.Quaternion>> {
+		return [
+			{
+				time: 0 * duration,
+				value: MRE.Quaternion.RotationAxis(axis, 0),
+			},
+			{
+				time: 0.25 * duration,
+				value: MRE.Quaternion.RotationAxis(axis, Math.PI / 2),
+			},
+			{
+				time: 0.5 * duration,
+				value: MRE.Quaternion.RotationAxis(axis, Math.PI),
+			},
+			{
+				time: 0.75 * duration,
+				value: MRE.Quaternion.RotationAxis(axis, (3 * Math.PI) / 2),
+			},
+			{
+				time: 1 * duration,
+				value: MRE.Quaternion.RotationAxis(axis, 2 * Math.PI),
+			},
+		];
 	}
-
-
-	
 }
